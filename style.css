@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+nav{
+    max-width: 100%;
+    margin: auto;
+    
+    
+}
+.im{
+    box-shadow:0px 1px 10px rgba(0,0,0,0.2) ;transition: all 400ms ease
+}
+.im:hover{
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+    transform: translateY(-2%);
+
+}
+.ti:hover{
+    color: white;
+}
+
+
+.he{
+    margin: 10px;
+}
+
+
+
+
+
+/*.f{
+    font-size: 30px;
+    margin: 7px;
+    margin-top: 3px;
+    color: white;
+}
+.f:hover{
+    color: blue;
+}
+.ins{
+    font-size: 30px;
+    margin: 7px;
+    margin-top: 3px;
+    color: white;
+}
+.ins:hover{
+    font-size: 30px;
+    margin: 7px;
+    margin-top: 3px;
+    color:rgb(232, 23, 236);
+}*/
