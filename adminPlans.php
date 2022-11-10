@@ -43,62 +43,72 @@ if ($rows = mysqli_fetch_all($result)) {
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src='main.js'></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/c1a6eed86c.js" crossorigin="anonymous"></script>
+        <style>
+            body {
+                background-image: url(/Diplomado/img/imgtabla.jpg);
+                background-size: 100%;
+            }
+        </style>
     </head>
 
     <body>
-        <table class="table table-dark table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($rows as $row) {
-                ?>
+        <header>
+        <nav class="  navbar navbar-expand-lg ">
+            <img src="img/img.jpg" class=" logo rounded-circle" width="45" height="45">
+            <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive; margin:0">Seguros</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        </header>
+        <div class="container " style="margin-top: 6%;">
+            <table class="table table-dark table-hover ">
+                <thead>
                     <tr>
-                        <th scope="row"><?php echo $row[0] ?></th>
-                        <td><?php echo $row[1] ?></td>
-                        <td>
-                            <form method="POST" action="adminPlans.php">
-                                <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
-                                <button class="btn btn-primary" name="detalles">Detalles</button>
-                                <button class="btn btn-secondary" name="editar">Editar</button>
-                                <button class="btn btn-success" name="solicitudes">Solicitudes</button>
-                                <button class="btn btn-warning" name="registrados">Registrados</button>
-                                <button class="btn btn-danger" name="eliminar">Eliminar</button>
-                            </form>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre del Plan</th>
+                        <th scope="col">Opciones</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($rows as $row) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $row[0] ?></th>
+                            <td><?php echo $row[1] ?></td>
+                            <td>
+                                <form method="POST" action="adminPlans.php">
+                                    <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
+                                    <button class="btn btn-primary" name="detalles">Detalles</button>
+                                    <button class="btn btn-secondary" name="editar">Editar</button>
+                                    <button class="btn btn-success" name="solicitudes">Solicitudes</button>
+                                    <button class="btn btn-warning" name="registrados">Registrados</button>
+                                    <button class="btn btn-danger" name="eliminar">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
 
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        <?php
-        foreach ($rows as $row) {
-        ?>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row[1] ?></h5>
-                    <ol class="list-group list-group-numbered">
-                        <?php
-                        foreach (json_decode($row[2]) as $oferta) { ?>
-                            <li class="list-group-item"><?php echo $oferta ?></li>
-                        <?php } ?>
-                    </ol>
-                    <form action="catalogoSV.php" method="POST">
-                        <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
-                        <button class="btn btn-success" name="cotizar">Cotizar</button>
-                    </form>
-                </div>
-            </div>
-        <?php
-        }
-        ?>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript"> 
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("abajo",window.scrollY>0);
+})
+
+</script>
     </body>
 <?php
 }

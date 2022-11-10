@@ -16,13 +16,22 @@
     <script src="https://kit.fontawesome.com/c1a6eed86c.js" crossorigin="anonymous"></script>
     <style>
         body {
-            background-image: url(/DiplomadoSeguros/img/imgseguros.jpg);
+            background-image: url(/Diplomado/img/imgseguros.jpg);
             background-size: 100%;
         }
     </style>
 </head>
 
 <body>
+<header>
+        <nav class="  navbar navbar-expand-lg ">
+            <img src="img/img.jpg" class=" logo rounded-circle" width="45" height="45">
+            <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive; margin:0">Seguros</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        </header>
 <?php 
 if(isset($_POST["id"])){
 ?>
@@ -77,27 +86,7 @@ if(isset($_POST["id"])){
         exit;
     }
     ?>
-    <nav class="navbar navbar-expand-lg " style="background-color:rgb(24, 106, 174);">
-        <div class="container-fluid">
-            <img src="/DiplomadoSeguros/img/img.jpg" style="margin:3px;" class="rounded-circle" width="30" height="30">
-            <a class=" ti navbar-brand mb-0 h1" href="/DiplomadoSeguros/Mosaico.html"
-                style="font-family: 'Lobster', cursive;">Seguros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#"
-                            style="font-family: 'Lobster', cursive;">Comprar seguro</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
     <form method="post" class="form-control  w-50 p-4"style="margin-left:25%;margin-top: 10%" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <!--Comienza el ciclo que dibuja los campos dinámicos-->
         <div class="d-flex">
@@ -114,4 +103,11 @@ if(isset($_POST["id"])){
         <button name="agregar" class="btn btn-success w-25" style="margin-left:25%;"type="submit">Agregar campo</button>
         <button name="guardar" class="btn btn-success w-25"style="margin-left:3px;" type="submit">Guardar lista</button>
     </form>
+    <script type="text/javascript"> 
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("abajo",window.scrollY>0);
+})
+
+</script>
 </body>
