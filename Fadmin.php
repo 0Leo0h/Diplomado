@@ -23,38 +23,34 @@
 </head>
 
 <body>
-<?php 
-if(isset($_POST["id"])){
-?>
-<input type="numer" name="id" value="<?php echo $_POST["id"] ?>" style="display:none;">
-<?php
-}
-?>
     <?php
     $ofertas = [];
     $nombre = '';
-    if(isset($_POST["id"])){
+    $id_plan;
+    if (isset($_POST["id"])) {
+        $id_plan = $_POST["id"];
         $server = "localhost";
-    $user = "prueba";
-    $passw = "123P";
-    $bd = "seguros";
+        $user = "prueba";
+        $passw = "123P";
+        $bd = "seguros";
 
-    $conexion = mysqli_connect($server, $user, $passw, $bd)
-        or die("Ha sucedido un error inexperado en la conexion de la base de datos");
+        $conexion = mysqli_connect($server, $user, $passw, $bd)
+            or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
 
 
-    $sql = "select * from seguro_vida";
-    $result = mysqli_query($conexion, $sql);
+        $sql = "select * from seguro_vida";
+        $result = mysqli_query($conexion, $sql);
 
-    if ($rows = mysqli_fetch_row($result)) {
-        $nombre = $rows[1];
-        $ofertas = json_decode($rows[2]);
-    }
+        if ($rows = mysqli_fetch_row($result)) {
+            $nombre = $rows[1];
+            $ofertas = json_decode($rows[2]);
+        }
     }
     if (isset($_POST["agregar"])) {
         $ofertas = $_POST["ofertas"];
         $nombre = $_POST["nombre"];
+        $id_plan = $_POST["id"];
     }
     if (isset($_POST["guardar"])) {
         $nombre = $_POST["nombre"];
@@ -71,35 +67,47 @@ if(isset($_POST["id"])){
         $conexion = mysqli_connect($server, $user, $passw, $bd)
             or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
-        $oferta = json_encode($ofertas);
-        $sql = "insert into seguro_vida (nom_plan,oferta,estado) values ('$nombre','$oferta','1')";
-        $result = mysqli_query($conexion, $sql);
-        exit;
+        $ofertas = array_filter($ofertas);
+        if (isset($_POST["id"])) {
+            $id_plan = $_POST["id"];
+            $oferta = json_encode($ofertas);
+            $sql = "update seguro_vida set nom_plan = '$nombre', oferta = '$oferta', estado = '1' where id = '$id_plan'";
+            $result = mysqli_query($conexion, $sql);
+            exit;
+        } else {
+            $oferta = json_encode($ofertas);
+            $sql = "insert into seguro_vida (nom_plan,oferta,estado) values ('$nombre','$oferta','1')";
+            $result = mysqli_query($conexion, $sql);
+            exit;
+        }
     }
     ?>
     <nav class="navbar navbar-expand-lg " style="background-color:rgb(24, 106, 174);">
         <div class="container-fluid">
             <img src="/DiplomadoSeguros/img/img.jpg" style="margin:3px;" class="rounded-circle" width="30" height="30">
-            <a class=" ti navbar-brand mb-0 h1" href="/DiplomadoSeguros/Mosaico.html"
-                style="font-family: 'Lobster', cursive;">Seguros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class=" ti navbar-brand mb-0 h1" href="/DiplomadoSeguros/Mosaico.html" style="font-family: 'Lobster', cursive;">Seguros</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#"
-                            style="font-family: 'Lobster', cursive;">Comprar seguro</a>
+                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#" style="font-family: 'Lobster', cursive;">Comprar seguro</a>
                     </li>
 
                 </ul>
             </div>
         </div>
     </nav>
-    <form method="post" class="form-control  w-50 p-4"style="margin-left:25%;margin-top: 10%" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post" class="form-control  w-50 p-4" style="margin-left:25%;margin-top: 10%" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <!--Comienza el ciclo que dibuja los campos dinámicos-->
+        <?php
+        if (isset($_POST["id"])) {
+        ?>
+            <input type="numer" name="id" value="<?php echo $_POST["id"] ?>" style="display:none;">
+        <?php
+        }
+        ?>
         <div class="d-flex">
             <input autocomplete="off" autofocus class="form-control w-50 m-2" type="text" name="nombre" value="<?php echo $nombre ?>" placeholder="Nombre Plan">
         </div>
@@ -111,7 +119,7 @@ if(isset($_POST["id"])){
         <!--Fuera de la lista tenemos siempre este campo, es el primero-->
         <input autocomplete="off" value="" class="form-control m-2" type="text" name="ofertas[]" placeholder="Oferta Plan">
         <br><br>
-        <button name="agregar" class="btn btn-success w-25" style="margin-left:25%;"type="submit">Agregar campo</button>
-        <button name="guardar" class="btn btn-success w-25"style="margin-left:3px;" type="submit">Guardar lista</button>
+        <button name="agregar" class="btn btn-success w-25" style="margin-left:25%;" type="submit">Agregar campo</button>
+        <button name="guardar" class="btn btn-success w-25" style="margin-left:3px;" type="submit">Guardar lista</button>
     </form>
 </body>
