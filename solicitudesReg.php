@@ -52,6 +52,7 @@ if (isset($_POST["detalles"])) {
                     background-image: url(/Diplomado/img/imgfondo2.jpg);
                     background-size: 100%;
                 }
+                
             </style>
         </head>
 
@@ -183,7 +184,7 @@ if (isset($_POST["detalles"])) {
 $sql = "SELECT * FROM seguroxpersona sp INNER JOIN datos_svida ds ON sp.id_persona = ds.id WHERE sp.id_plan = '$id'";
 $result = mysqli_query($conexion, $sql);
 if ($rows = mysqli_fetch_all($result)) {
-    print_r($rows);
+    
     ?>
     <!DOCTYPE html>
     <html>
@@ -207,6 +208,19 @@ if ($rows = mysqli_fetch_all($result)) {
                 background-image: url(/Diplomado/img/imgfondo2.jpg);
                 background-size: 100%;
             }
+            .table-info {
+    --bs-table-color: #000; 
+    --bs-table-bg: #cff4fc;
+    --bs-table-border-color: #badce3;
+    --bs-table-striped-bg: #c5e8ef;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #badce3;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #bfe2e9;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
         </style>
     </head>
 
@@ -245,10 +259,10 @@ if ($rows = mysqli_fetch_all($result)) {
             </nav>
         </header>
         
-            <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: 6%;margin:2%">
-                <table class="table table-info table-hover">
-                    <thead>
-                        <tr>
+            <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: 6%; margin-left:3%; margin-right:3%">
+                <table class="table table-info table-hover  ">
+                    <thead >
+                        <tr >
                             <th scope="col">#</th>
                             <th scope="col">Nombre del Plan</th>
                             <th scope="col">Nombre</th>
@@ -262,7 +276,7 @@ if ($rows = mysqli_fetch_all($result)) {
                         <?php
                         foreach ($rows as $row) {
                         ?>
-                            <tr>
+                            <tr  >
                                 <th scope="row"><?php echo $row[0]  ?></th>
                                 <td><?php echo $row[1] ?></td>
                                 <td><?php echo $row[6] ?></td>
@@ -272,9 +286,9 @@ if ($rows = mysqli_fetch_all($result)) {
                                 <td>
                                     <form method="POST" action="solicitudesReg.php">
                                         <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
-                                        <button class="btn btn-primary" name="detalles">Detalles</button>
-                                        <button class="btn btn-danger" name="aceptar">Aceptar</button>
-                                        <button class="btn btn-danger" name="rechazar">Rechazar</button>
+                                        <button class="btn btn-primary" style="margin:3px ;" name="detalles">Detalles</button>
+                                        <button class="btn btn-success" style="margin:3px ;" name="aceptar">Aceptar</button>
+                                        <button class="btn btn-danger" style="margin:3px ;"name="rechazar">Rechazar</button>
                                     </form>
                                 </td>
                             </tr>

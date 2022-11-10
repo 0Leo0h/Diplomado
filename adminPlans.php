@@ -1,17 +1,19 @@
 <?php
+if (isset($_POST["editar"])) {
+  include('Fadmin.php');
+  exit();
+}
+if (isset($_POST["registrados"])) {
+  include('solicitudesReg.php');
+  exit();
+}
 session_start();
 
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
     header("location: index.php");
 }
-if (isset($_POST["editar"])) {
-    include('Fadmin.php');
-    exit();
-}
-if (isset($_POST["registrados"])) {
-    include('solicitudesReg.php');
-    exit();
-}
+
+
 
 $server = "localhost";
 $user = "Admin";
@@ -93,7 +95,8 @@ if ($rows = mysqli_fetch_all($result)) {
     </div>
   </nav>
   </header>
-        <div class="container " style="margin-top: 6%; max-width:800px;">
+        <div class="container  " style="margin-top: 6%; max-width:800px;">
+        <div class="shadow p-1 mb-1 bg-dark rounded">
             <table class="table table-dark table-hover ">
                 <thead>
                     <tr>
@@ -110,7 +113,7 @@ if ($rows = mysqli_fetch_all($result)) {
                             <th scope="row"><?php echo $row[0] ?></th>
                             <td><?php echo $row[1] ?></td>
                             <td>
-                            <form method="POST" action="adminPlans.php">
+                            <form method="POST" action="adminPlans.php" >
                                 <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
                                 <button class="btn btn-secondary"  style="margin-left:20px ;" name="editar">Editar</button>
                                 <button class="btn btn-warning" style="margin-left:20px ;" name="registrados">Registrados</button>
@@ -124,6 +127,7 @@ if ($rows = mysqli_fetch_all($result)) {
                     ?>
                 </tbody>
             </table>
+        </div>
         </div>
         <script type="text/javascript"> 
 window.addEventListener("scroll", function(){

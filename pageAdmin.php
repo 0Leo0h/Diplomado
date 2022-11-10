@@ -43,7 +43,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
             <div class="col-6">
 
                 <a href="adminPlans.php">
-                    <img class=" im d-block w-100 rounded-start border border-4" style="box-shadow:0px 1px 10px rgba(0,0,0,0.2) ;transition: all 400ms ease;" src="img/imgcora2.jpg" height="600">
+                    <img class=" im d-block w-100 rounded border border-4" style="box-shadow:0px 1px 10px rgba(0,0,0,0.2) ;transition: all 400ms ease;" src="img/imgcora2.jpg" height="600">
                 </a>
                 <h1 class="a position-absolute  fw-bold " style=" top:20px; left:12%; font-family: 'Lobster', cursive;">Administrar Planes
                 </h1>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
             <div class="col-6 ">
 
         <a href="Fadmin.php">
-          <img class="im d-block w-100 rounded-end border border-4" src="img/imgcora.jpg" height="600">
+          <img class="im d-block w-100 rounded border border-4" src="img/imgcora.jpg" height="600">
         </a>
         <h1 class="a position-absolute  fw-bold"
           style="position:position-absolute ; top:20px; right: 18%; font-family: 'Lobster', cursive;">Crear Plan</h1>

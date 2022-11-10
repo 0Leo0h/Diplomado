@@ -131,7 +131,7 @@
         <input autocomplete="off" value="" class="form-control m-2" type="text" name="ofertas[]" placeholder="Oferta Plan">
         <br><br>
         <button name="agregar" class="btn btn-success w-25" style="margin-left:25%;" type="submit">Agregar campo</button>
-        <button name="guardar" class="btn btn-success w-25" style="margin-left:3px;" type="submit">Guardar lista</button>
+        <button name="guardar" class="btn btn-success w-25" style="margin-left:3px;" type="submit">Guardar</button>
     </form>
     <script type="text/javascript"> 
 window.addEventListener("scroll", function(){
