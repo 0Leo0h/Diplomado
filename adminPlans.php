@@ -59,16 +59,40 @@ if ($rows = mysqli_fetch_all($result)) {
     </head>
 
     <body>
-        <header>
-        <nav class="  navbar navbar-expand-lg ">
-            <img src="img/img.jpg" class=" logo rounded-circle" width="45" height="45">
-            <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive; margin:0">Seguros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        </header>
-        <div class="container " style="margin-top: 6%;">
+    <header>
+  <nav class="  navbar navbar-expand-lg " >
+    <img src="img/img.jpg"  class=" logo rounded-circle"  width="45" height="45">
+    <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <?php
+        
+
+        if (!isset($_SESSION['rol'])) {
+        ?>
+          <li class="nav-item">
+            <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="login.html" style="font-family: 'Lobster', cursive;">Login</a>
+          </li>
+          <?php
+        } else {
+          if ($_SESSION['rol'] == 'admin') {
+          ?>
+            <li class="nav-item">
+              <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="pageAdmin.php" style="font-family: 'Lobster', cursive;">Admin</a>
+            </li>
+        <?php
+          }
+        }
+        ?>
+      </ul>
+    </div>
+  </nav>
+  </header>
+        <div class="container " style="margin-top: 6%; max-width:800px;">
             <table class="table table-dark table-hover ">
                 <thead>
                     <tr>
@@ -87,9 +111,9 @@ if ($rows = mysqli_fetch_all($result)) {
                             <td>
                             <form method="POST" action="adminPlans.php">
                                 <input type="numer" name="id" value="<?php echo $row[0] ?>" style="display:none;">
-                                <button class="btn btn-secondary" name="editar">Editar</button>
-                                <button class="btn btn-warning" name="registrados">Registrados</button>
-                                <button class="btn btn-danger" name="eliminar">Eliminar</button>
+                                <button class="btn btn-secondary"  style="margin-left:20px ;" name="editar">Editar</button>
+                                <button class="btn btn-warning" style="margin-left:20px ;" name="registrados">Registrados</button>
+                                <button class="btn btn-danger"  style="margin-left:20px ;" name="eliminar">Eliminar</button>
                             </form>
                         </td>
                         </tr>

@@ -24,14 +24,38 @@
 
 <body>
 <header>
-        <nav class="  navbar navbar-expand-lg ">
-            <img src="img/img.jpg" class=" logo rounded-circle" width="45" height="45">
-            <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive; margin:0">Seguros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        </header>
+  <nav class="  navbar navbar-expand-lg " >
+    <img src="img/img.jpg"  class=" logo rounded-circle"  width="45" height="45">
+    <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <?php
+        session_start();
+
+        if (!isset($_SESSION['rol'])) {
+        ?>
+          <li class="nav-item">
+            <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="login.html" style="font-family: 'Lobster', cursive;">Login</a>
+          </li>
+          <?php
+        } else {
+          if ($_SESSION['rol'] == 'admin') {
+          ?>
+            <li class="nav-item">
+              <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="pageAdmin.php" style="font-family: 'Lobster', cursive;">Admin</a>
+            </li>
+        <?php
+          }
+        }
+        ?>
+      </ul>
+    </div>
+  </nav>
+  </header>
     <?php
     $ofertas = [];
     $nombre = '';
