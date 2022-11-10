@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
     header("location: index.php");
 }
-session_destroy();
 ?>
 <!DOCTYPE html>
 <html>

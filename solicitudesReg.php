@@ -9,8 +9,8 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
 $id = $_POST["id"];
 
 $server = "localhost";
-$user = "root";
-$passw = "";
+$user = "Admin";
+$passw = "#351Tl";
 $bd = "seguros";
 
 $conexion = mysqli_connect($server, $user, $passw, $bd)

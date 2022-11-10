@@ -35,7 +35,10 @@
         
         <?php
         session_start();
-
+        if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
+          header("location: index.php");
+          exit();
+      }
         if (!isset($_SESSION['rol'])) {
         ?>
           <li class="nav-item">
@@ -57,20 +60,19 @@
   </nav>
   </header>
     <?php
+    $server = "localhost";
+    $user = "Admin";
+    $passw = "#351Tl";
+    $bd = "seguros";
+
+    $conexion = mysqli_connect($server, $user, $passw, $bd)
+        or die("Ha sucedido un error inexperado en la conexion de la base de datos");
+
     $ofertas = [];
     $nombre = '';
     $id_plan;
     if (isset($_POST["id"])) {
         $id_plan = $_POST["id"];
-        $server = "localhost";
-        $user = "prueba";
-        $passw = "123P";
-        $bd = "seguros";
-
-        $conexion = mysqli_connect($server, $user, $passw, $bd)
-            or die("Ha sucedido un error inexperado en la conexion de la base de datos");
-
-
 
         $sql = "select * from seguro_vida";
         $result = mysqli_query($conexion, $sql);
@@ -91,14 +93,6 @@
         if (empty($ofertas[0])) {
             echo "Nombre vacio";
         }
-
-        $server = "localhost";
-        $user = "root";
-        $passw = "";
-        $bd = "seguros";
-
-        $conexion = mysqli_connect($server, $user, $passw, $bd)
-            or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
         $ofertas = array_filter($ofertas);
         if (isset($_POST["id"])) {

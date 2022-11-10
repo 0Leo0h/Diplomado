@@ -12,9 +12,10 @@ if (isset($_POST["registrados"])) {
     include('solicitudesReg.php');
     exit();
 }
+
 $server = "localhost";
-$user = "root";
-$passw = "";
+$user = "Admin";
+$passw = "#351Tl";
 $bd = "seguros";
 
 $conexion = mysqli_connect($server, $user, $passw, $bd)
