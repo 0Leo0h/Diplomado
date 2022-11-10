@@ -22,31 +22,23 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
     <script src="https://kit.fontawesome.com/c1a6eed86c.js" crossorigin="anonymous"></script>
     <style>
         body {
-            background-image: url(/DiplomadoSeguros/img/imgfondo2.jpg);
+            background-image: url(/Diplomado/img/imgadmin.jpg);
             background-size: 100%;
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg " style="background-color:rgb(24, 106, 174);">
-        <div class="container-fluid">
-            <img src="/DiplomadoSeguros/img/img.jpg" style="margin:3px;" class="rounded-circle" width="30" height="30">
-            <a class=" ti navbar-brand mb-0 h1" href="Index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
+<header>
+        <nav class="  navbar navbar-expand-lg ">
+            <img src="img/img.jpg" class=" logo rounded-circle" width="45" height="45">
+            <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive; margin:0">Seguros</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#" style="font-family: 'Lobster', cursive;">Comprar seguro</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container" style="margin-top: 2%;">
+        </nav>
+        </header>
+    <div class="container" style="margin-top: 6%;">
         <div class="row h-25 m-3 position-relative" >
             <div class="col-6">
 
@@ -68,4 +60,11 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin') {
       </div>
         </div>
     </div>
+    <script type="text/javascript"> 
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("abajo",window.scrollY>0);
+})
+
+</script>
 </body>

@@ -16,33 +16,47 @@
     <script src="https://kit.fontawesome.com/c1a6eed86c.js" crossorigin="anonymous"></script>
     <style>
         body {
-            background-image: url(/DiplomadoSeguros/img/imgfondo2.jpg);
+            background-image: url(/Diplomado/img/imgfondo2.jpg);
             background-size: 100%;
         }
     </style>
 </head>
 
 <body style="background-color:beige;">
-    <nav class="navbar navbar-expand-lg " style="background-color:rgb(24, 106, 174);">
-        <div class="container-fluid">
-            <img src="/DiplomadoSeguros/img/img.jpg" style="margin:3px;" class="rounded-circle" width="30" height="30">
-            <a class=" ti navbar-brand mb-0 h1" href="/DiplomadoSeguros/Mosaico.html" style="font-family: 'Lobster', cursive;">Seguros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#" style="font-family: 'Lobster', cursive;">Comprar seguro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="ti navbar-brand mb-0 h1" aria-current="page" href="#" style="font-family: 'Lobster', cursive;">Registro</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
+<header>
+  <nav class="  navbar navbar-expand-lg " >
+    <img src="img/img.jpg"  class=" logo rounded-circle" width="45" height="45">
+    <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <?php
+        session_start();
+
+        if (!isset($_SESSION['rol'])) {
+        ?>
+          <li class="nav-item">
+            <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="login.html" style="font-family: 'Lobster', cursive;">Login</a>
+          </li>
+          <?php
+        } else {
+          if ($_SESSION['rol'] == 'admin') {
+          ?>
+            <li class="nav-item">
+              <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="pageAdmin.php" style="font-family: 'Lobster', cursive;">Admin</a>
+            </li>
+        <?php
+          }
+        }
+        ?>
+      </ul>
+    </div>
+  </nav>
+  </header>
+    <div class="container" style="margin-top: 6%;">
         <div style="background-color:lightblue; " class="mt-2 rounded">
             <h1 style="margin-left:5px; margin-left:35%;font-family: 'Lobster', cursive;">Formulario Personas</h1>
         </div>
@@ -182,4 +196,11 @@
             <button class="btn btn-success mt-5 mb-2 w-25 " style="margin-left:35%;" name="registrar" type="submit">Guardar</button>
         </form>
     </div>
+    <script type="text/javascript"> 
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("abajo",window.scrollY>0);
+})
+
+</script>
 </body>

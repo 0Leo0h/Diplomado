@@ -16,40 +16,41 @@
   <script src="https://kit.fontawesome.com/c1a6eed86c.js" crossorigin="anonymous"></script>
   <style>
     body {
-      background-image: url(/DiplomadoSeguros/img/imgfondo2.jpg);
+      background-image: url(/Diplomado/img/imgfondo2.jpg);
       background-size: 100%;
     }
+    
+    
+    
   </style>
 </head>
 
-<body style="background-color:beige;">
+<body >
 
-
-  <nav class="  navbar navbar-expand-lg " style="background-color:rgb(24, 106, 174);">
-    <img src="img/img.jpg" style="margin:3px;margin-left: 50px;" class="rounded-circle" width="30" height="30">
-    <a class=" ti navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
+<header>
+  <nav class="  navbar navbar-expand-lg " >
+    <img src="img/img.jpg"  class=" logo rounded-circle"  width="45" height="45">
+    <a class=" seg navbar-brand mb-0 h1" href="index.php" style="font-family: 'Lobster', cursive;">Seguros</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class=" ti navbar-brand mb-0 h1" aria-current="page" href="index.php" style="font-family: 'Lobster', cursive; " hover="background-color:aqua">Comprar seguro</a>
-        </li>
+        
         <?php
         session_start();
 
         if (!isset($_SESSION['rol'])) {
         ?>
           <li class="nav-item">
-            <a class=" ti navbar-brand mb-0 h1" aria-current="page" href="login.html" style="font-family: 'Lobster', cursive;margin-left: 1000px;">Login</a>
+            <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="login.html" style="font-family: 'Lobster', cursive;">Login</a>
           </li>
           <?php
         } else {
           if ($_SESSION['rol'] == 'admin') {
           ?>
             <li class="nav-item">
-              <a class=" ti navbar-brand mb-0 h1" aria-current="page" href="pageAdmin.php" style="font-family: 'Lobster', cursive;margin-left: 1000px;">Admin</a>
+              <a class=" adm navbar-brand mb-0 h1" aria-current="page" href="pageAdmin.php" style="font-family: 'Lobster', cursive;">Admin</a>
             </li>
         <?php
           }
@@ -58,15 +59,16 @@
       </ul>
     </div>
   </nav>
+  </header>
 
-
-  <div class="container ">
+  
+  <div class="container " style="margin-top:6%">
 
     <div class="row h-25 m-3 position-relative">
       <div class="col-4">
 
-        <a href="/DiplomadoSeguros/Personas.php">
-          <img class=" im d-block w-100 rounded-start border border-4" style="box-shadow:0px 1px 10px rgba(0,0,0,0.2) ;transition: all 400ms ease;" src="/DiplomadoSeguros/img/img1.jpg" height="600">
+        <a href="catalogoSV.php">
+          <img class=" im d-block w-100 rounded-start border border-4"  src="/Diplomado/img/img1.jpg" height="600">
         </a>
         <h1 class="a position-absolute  fw-bold " style=" top:20px; left:10%; font-family: 'Lobster', cursive;">Personas
         </h1>
@@ -74,16 +76,16 @@
       </div>
       <div class="col-4 ">
 
-        <a href="/DiplomadoSeguros/Vivienda.php">
-          <img class="im d-block w-100 border border-4" src="/DiplomadoSeguros/img/img2.jpg" height="600">
+        <a href="/Diplomado/Vivienda.php">
+          <img class="im d-block w-100 border border-4" src="/Diplomado/img/img2.jpg" height="600">
         </a>
         <h1 class=" a position-absolute  fw-bold " style="position:position-absolute ; top:20px; right: 42%;font-family: 'Lobster', cursive;">Vivienda</h1>
 
       </div>
       <div class="col-4 ">
 
-        <a href="/DiplomadoSeguros/Vehiculo.php">
-          <img class="im d-block w-100 rounded-end border border-4" src="/DiplomadoSeguros/img/img3.jpg" height="600">
+        <a href="/Diplomado/Vehiculo.php">
+          <img class="im d-block w-100 rounded-end border border-4" src="/Diplomado/img/img3.jpg" height="600">
         </a>
         <h1 class="a position-absolute  fw-bold" style="position:position-absolute ; top:20px; right: 10%; font-family: 'Lobster', cursive;">Vehiculo</h1>
 
@@ -101,6 +103,12 @@
 <a href="https://www.instagram.com/luis.buelvas" target="_blank"> <i class=" ins fa-brands fa-instagram"></i></a>-->
 
   </div>
+<script type="text/javascript"> 
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("abajo",window.scrollY>0);
+})
 
+</script>
 
 </body>
