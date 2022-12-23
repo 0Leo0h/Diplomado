@@ -94,8 +94,7 @@
   </div>
   <div style="background-color:rgb(225, 198, 158) ;">
     <h6 class="he" style="font-family: 'Lobster', cursive">
-      Hecho por<br> Luis Fernando Buelvas Tordecilla<br> Leonardo David Hernandez Palomo<br> Liseth Del Carmen Montes
-      Martínez
+      Hecho por<br> Luis Fernando Buelvas Tordecilla<br> Leonardo David Hernandez Palomo
     </h6>
 
 
